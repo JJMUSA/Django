@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home page</title>
+</head>
+<body>
+
+    {%if user.is_authenticated%}
+    <h1> Welcome to the homepage {{user.user_name}}</h1>
+    {%else%}
+    <a href="{%url 'tradingSite:login'%}"> Sign in</a>
+    {%endif%}
+</body>
+</html>

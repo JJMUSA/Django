@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{user}} portfolio</title>
+</head>
+<body>
+    {%if portfolio_list%}
+        <table>
+            <thead>
+                <th>Commodity</th>
+                <th> Gains Made</th>
+                <th>Volume </th>
+                <th>Amount</th>
+            </thead>
+            <tbody>
+                {%for com in portfolio_list%}
+                    <tr>{{com[0]}}</tr>
+                    <tr>{{com[1]}}</tr>
+                <tr>
+                    <label  for="volume">Volume</label>
+                    <input id="volume", type="number"><input>
+                </tr>
+                <tr></tr>
+            </tbody>>
+        </table>
+    {%else%}
+        <h2> Your Don't own any stock in your portfolio.</h2>
+    {%endif%}
+</body>
+</html>

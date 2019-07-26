@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Securities Listing</title>
+
+</head>
+<body>
+    {%if user.is_authenticated%}
+        <div class ='navbar', align="right" style="display:inline-block">
+            <ul style="display:inline-block">
+                <li>{{user.username}}</li>
+                <li><a href="{%url 'tradingSite:logout'%}">Logout</a></li>
+                <li><a href="">Portfolio</a>></li>
+            </ul>
+
+        </div>
+        {%if latest_commodity_prices%}
+            <table style="width:80%">
+                <thead>
+                    <tr><th>Commodity</th>
+                    <th>Current_Price (N/Ton)</th>
+                    <th>Previous_Price (N/Ton)</th>
+                    <th>Change</th>
+                    <th>Date</th>
+                </thead>
+
+                <tbody>
+
+                        {%for com in latest_commodity_prices%}
+                            <tr>
+                                <td align="center">{{com.name}}</td>
+                                <td align="center">{{com.current_price}}</td>
+                                <td align="center">{{com.previous_price}}</td>
+                                <td align="center">{{com.change}}</td>
+                                <td align="center">{{com.Date}}</td>
+                                <td align="center" colspan="5"><button type="submit">Sell</button></td>
+                                <td align="center" colspan="5"><button type="submit">Buy</button></td>
+                            </tr>
+                        {%endfor%}
+                </tbody>
+            </table>
+        {%else%}
+            <h1>No Commodities to display</h1>
+        {%endif%}
+    {%else%}
+        <p> You Most be Signed to view Tradable Commodities<p>
+
+    {%endif%}
+</body>
+</html>
